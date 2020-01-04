@@ -26,12 +26,7 @@ let xgroundedge;
 let zgroundedge;
 let isMovingForward;
 let isMovingBackward;
-let vPosition; //
-let vNormal;
-let vAmbientDiffuseColor; //Ambient and Diffuse can be the same for the material
-let vSpecularColor; //highlight color
-let vSpecularExponent;
-let light; // set to 0 if no light, 1 if light
+let light;
 let headlight_color;
 let siren_red;
 let siren_blue;
@@ -72,7 +67,7 @@ window.onload = function init() {
     if (!gl) {
         alert("webGL isn't available");
     }
-    program = initFileShaders(gl, "vshader-phong.glsl", "fshader-phong.glsl");
+    program = initFileShaders(gl, "Shaders/vshader-phong.glsl", "Shaders/fshader-phong.glsl");
     gl.useProgram(program);
     umv = gl.getUniformLocation(program, "model_view");
     uproj = gl.getUniformLocation(program, "projection");
