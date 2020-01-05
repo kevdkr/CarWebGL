@@ -89,4 +89,13 @@ void main() {
 }
 ```
 Here is where the Phong lighting equation takes place. 
-If the headlights of the car are on, it also calculates what the cutoff angle of each headlight is. E.g. it does not light up the ground if it is outside the range of the headlight.
+
+If the headlights are turned on, it also calculates how much of the scene should be lit up by the headlights.
+
+```glsl
+if (dot( normalize(H - S), normalize(-lightDirection)) >= Math.cos(theta))
+```
+
+- H - S gives the vector from the surface point to the headlight point. 
+- Taking the dot product of H - S and the lightDirection gives the cosine of the angle **to** the surface **from** the light source. 
+- This can be compared with the cosine of the chosen cutoff angle. If the cosine of the angle calculated from the dot product is greater than or equal to the cosine of the cutoff angle, the surface should be lit. Otherwise, the surface does not get lit. 
